@@ -3,6 +3,7 @@ import {useStyles} from '../useStyles'
 import {Grid,TextField} from '@material-ui/core'
 
 export const Search = () => {
+  const classes = useStyles()
     return (
         <TextField
           id="standard-full-width"

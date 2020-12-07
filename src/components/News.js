@@ -1,11 +1,40 @@
 import React from 'react'
 import {useStyles} from '../useStyles'
-import {Grid} from '@material-ui/core'
+import {Card,CardActionArea,CardMedia,CardContent,Typography,CardActions,Button} from '@material-ui/core'
 
-export const News = () => {
+function getDateString(date){
+	return new Date(date).toDateString()
+}
+export const News = ({img,title,url,description,published,content,author}) => {
     return (
-        <div>
-            News
-        </div>
+        <a href={url} style={{ textDecoration: "none"}} target="_blank" rel="noreferrer noopener">
+        <Card style={{ margin: "9px 0"}}>
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            alt={title}
+            height="auto"
+            image={img}
+            title={description}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              {title}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {description}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" color="primary" variant="contained">
+            {author.substr(0,12)}
+          </Button>
+          <Typography variant="body1" color="textSecondary" component="p" style={{ marginLeft:'auto'}}>
+              {getDateString(published)}
+          </Typography>
+        </CardActions>
+      </Card>
+      </a>
     )
 }

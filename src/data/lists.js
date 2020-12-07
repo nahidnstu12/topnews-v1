@@ -1,4 +1,4 @@
-// 10 category
+// 11 category
 export const categoryList = {
     science : 'science',
     technology: 'technology',

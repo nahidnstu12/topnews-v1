@@ -27,12 +27,32 @@ export const useStyles = makeStyles((theme) => ({
     },
     catBtn:{
         margin:'7px',
-        color: theme.palette.getContrastText(teal[500]),
-        backgroundColor: cyan[500],
+        color: theme.palette.getContrastText(teal[200]),
+        // backgroundColor: cyan[500],
         '&:hover': {
         backgroundColor: teal[700],
+        color: theme.palette.getContrastText(teal[600]),
         }
     },
+    CountNews:{
+        display:'flex',
+        justifyContent:'space-between',
+        color:'#564c4c'
+    },
+    news:{
+        maxWidth:'345px'
+    },
+    pagination:{
+        display:'flex',
+        justifyContent:'space-between',
+        alignItems:'center',
+        padding:'12px',
+        margin:'10px 4px'
+    },
+    loading:{
+        display:'flex',
+        justifyContent:'space-between'
+    }
 	
 })
 )
