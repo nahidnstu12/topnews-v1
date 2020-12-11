@@ -6,8 +6,9 @@ import { NewsList } from './components/NewsList';
 import { Pagination } from './components/Pagination';
 import { Search } from './components/Search';
 import { useStyles} from './useStyles';
-import { Loading } from './components/Loading';
+// import { Loading } from './components/Loading';
 import {categoryList as list} from './data/lists'
+import News from './data/News'
 
 const data = [
   {
@@ -64,9 +65,12 @@ const data = [
 },
 ]
 
+const news = new News("Nahid");
+
 function App() {
   const classes = useStyles();
-  const [selected,setSelected] = useState(list.stockMarket);
+  const [selected] = useState(list.stockMarket);
+  console.log(news.sayHi())
 	return (
 		<Grid container className={classes.root}>
 			<Grid className={classes.item}>

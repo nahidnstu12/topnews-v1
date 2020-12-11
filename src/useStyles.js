@@ -1,5 +1,4 @@
 import {makeStyles} from '@material-ui/core'
-import { cyan, teal } from '@material-ui/core/colors';
 
 export const useStyles = makeStyles((theme) => ({
 	root: {
@@ -25,20 +24,6 @@ export const useStyles = makeStyles((theme) => ({
         height:'45px',
         marginRight:'7px'
     },
-    catBtn:{
-        margin:'7px',
-        color: theme.palette.getContrastText(teal[200]),
-        // backgroundColor: cyan[500],
-        '&:hover': {
-        backgroundColor: teal[700],
-        color: theme.palette.getContrastText(teal[600]),
-        }
-    },
-    CountNews:{
-        display:'flex',
-        justifyContent:'space-between',
-        color:'#564c4c'
-    },
     news:{
         maxWidth:'345px'
     },
@@ -52,6 +37,13 @@ export const useStyles = makeStyles((theme) => ({
     loading:{
         display:'flex',
         justifyContent:'space-between'
+    },
+    btnStyle:{
+        color:'white',
+        background:'teal',
+        '&:hover':{
+            background:'teal'
+        }
     }
 	
 })

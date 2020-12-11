@@ -6,6 +6,7 @@ function getDateString(date){
 	return new Date(date).toDateString()
 }
 export const News = ({img,title,url,description,published,content,author}) => {
+  const classes = useStyles()
     return (
         <a href={url} style={{ textDecoration: "none"}} target="_blank" rel="noreferrer noopener">
         <Card style={{ margin: "9px 0"}}>
@@ -27,7 +28,7 @@ export const News = ({img,title,url,description,published,content,author}) => {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary" variant="contained">
+          <Button size="small" variant="contained" className={classes.btnStyle}>
             {author.substr(0,12)}
           </Button>
           <Typography variant="body1" color="textSecondary" component="p" style={{ marginLeft:'auto'}}>

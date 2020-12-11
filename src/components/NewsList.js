@@ -1,7 +1,6 @@
 import React from 'react'
-import {useStyles} from '../useStyles'
 import {Grid} from '@material-ui/core'
-import {News} from './News'
+import {News} from  './NewsItem'
 
 export const NewsList = ({data}) => {
     // console.log(data)

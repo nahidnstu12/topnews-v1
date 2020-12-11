@@ -7,7 +7,7 @@ export const Pagination = () => {
     const classes = useStyles()
     return (
         <Grid className={classes.pagination}>
-            <Button variant="contained" color="primary">Prev</Button>
+            <Button variant="contained" className={classes.btnStyle}>Prev</Button>
             <Grid className={classes.pageInp}>
                 {isEditable ? (<TextField value="1" type="number"/>)
                 :
@@ -18,7 +18,7 @@ export const Pagination = () => {
                 }
                 
             </Grid>
-            <Button variant="contained" color="primary">Next</Button>
+            <Button variant="contained" className={classes.btnStyle}>Next</Button>
         </Grid>
     )
 }

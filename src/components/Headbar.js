@@ -7,7 +7,7 @@ const Headbar = () => {
     const classes = useStyles();
     return (
         <Grid item className={classes.head1} xs={12}>
-            <img src="./img/nb2.png" className={classes.head1Img} alt="brand logo"/>
+            <img src="./img/nb.png" className={classes.head1Img} alt="brand logo"/>
             <h1>Top News Headlines</h1>
         </Grid>
     )
