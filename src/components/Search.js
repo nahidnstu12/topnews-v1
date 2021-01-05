@@ -1,7 +1,9 @@
 import React from 'react'
 import {TextField} from '@material-ui/core'
 
-export const Search = () => {
+export const Search = ({search}) => {
+  // const handleChange = 
+  
     return (
         <TextField
           id="standard-full-width"
@@ -10,6 +12,7 @@ export const Search = () => {
           fullWidth
           margin="normal"
           variant="filled"
+          onChange={e => search(e.target.value)}
         />
     )
 }

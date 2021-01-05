@@ -1,7 +1,7 @@
 import React from 'react'
 // import {useStyles} from '../useStyles'
 import {Grid,Button,makeStyles} from '@material-ui/core'
-import {categoryList as list} from '../data/lists'
+import {categoryItem as list} from '../data/categoryItem'
 
 const useStyles = makeStyles(theme =>({
     catBtn:{
@@ -22,28 +22,37 @@ const useStyles = makeStyles(theme =>({
         color:'#564c4c'
     },
 }))
-export const CategoryList = ({selected}) => {
+
+export const CategoryList = ({cat_select,changeCategory,totalNews}) => {
     const classes = useStyles()
     return (
         <Grid item xs style={{ marginBottom:'12px'}}>
             {Object.values(list).map((itm,ind)=>
-                <Button variant={selected === itm ? 'contained' : 'outlined'} color="secondary" key={ind} className={classes.catBtn}>
+                <Button variant={cat_select === itm ? 'contained' : 'outlined'}  
+                key={ind} 
+                className={classes.catBtn} 
+                onClick={()=>changeCategory(itm)} 
+                color="secondary" 
+                style={{color: cat_select === itm ? 'white' : 'black'}}>
                     {itm}
                 </Button>
             )}
             
-            <CountNews />
+            <CountNews totalNews={totalNews}/>
         </Grid>
     )
 }
 
 
-const CountNews = () => {
+const CountNews = ({totalNews}) => {
     const classes = useStyles()
+    const totalPages = Math.ceil(totalNews/10);
+
+
     return(
         <Grid className={classes.CountNews}>
-            <p>Found 3456 Results</p>
-            <p>1 of 231 pages</p>
+            <p>Found {totalNews} Results</p>
+            <p>1 of {totalPages} pages</p>
         </Grid>
     )
 }
