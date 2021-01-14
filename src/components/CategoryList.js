@@ -16,11 +16,7 @@ const useStyles = makeStyles(theme =>({
             padding:'5px',
         }
     },
-    CountNews:{
-        display:'flex',
-        justifyContent:'space-between',
-        color:'#564c4c'
-    },
+    
 }))
 
 export const CategoryList = ({cat_select,changeCategory,totalNews}) => {
@@ -36,24 +32,11 @@ export const CategoryList = ({cat_select,changeCategory,totalNews}) => {
                 style={{color: cat_select === itm ? 'white' : 'black'}}>
                     {itm}
                 </Button>
-            )}
-            
-            <CountNews totalNews={totalNews}/>
+            )}            
         </Grid>
     )
 }
 
 
-const CountNews = ({totalNews}) => {
-    const classes = useStyles()
-    const totalPages = Math.ceil(totalNews/10);
 
-
-    return(
-        <Grid className={classes.CountNews}>
-            <p>Found {totalNews} Results</p>
-            <p>1 of {totalPages} pages</p>
-        </Grid>
-    )
-}
 
