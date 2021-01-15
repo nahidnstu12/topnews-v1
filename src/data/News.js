@@ -17,8 +17,8 @@ class News{
         if(this._category) url+= `category=${this._category}`
 
         // if we claer search term,then automatic call category
-        this._term ? url+= `&q=${this._term}` : url+= `&category=${categoryItem.general}`
-        // if(this._term)  url+= `&q=${this._term}` 
+        // this._term ? url+= `&q=${this._term}` : url+= `&category=${categoryItem.general}`
+        if(this._term)  url+= `&q=${this._term}` 
         if(this._pageSize) url+= `&pageSize=${this._pageSize}`
         if(this._currentPage) url+= `&page=${this._currentPage}`
         console.log(url)

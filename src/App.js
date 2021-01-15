@@ -62,46 +62,46 @@ function App() {
   }
   // pagination handles
   const next = () => {
-    if(response.isNext){
-    setLoading(true)
-    }
-    news.next()
-    .then(data => {
-      setResponse(data)
-      setLoading(false)
-    })
-    .catch(e => {
-      errMsg(e)
-    })
+    // if(response.isNext){
+    // setLoading(true)
+    // }
+    // news.next()
+    // .then(data => {
+    //   setResponse(data)
+    //   setLoading(false)
+    // })
+    // .catch(e => {
+    //   errMsg(e)
+    // })
   }
   const prev = () => {
-    if(response.isPrev){
-      setLoading(true)
-      }
-    news.prev()
-    .then(data => {
-      setResponse(data)
-      setLoading(false)
-    })
-    .catch(e => {
-      errMsg(e)
-    })
+    // if(response.isPrev){
+    //   setLoading(true)
+    //   }
+    // news.prev()
+    // .then(data => {
+    //   setResponse(data)
+    //   setLoading(false)
+    // })
+    // .catch(e => {
+    //   errMsg(e)
+    // })
   }
   const handlePageNumber = number => {
 
   }
   const gotoPage = (pageNumb) =>{
     
-      setLoading(true)
+    //   setLoading(true)
     
-    news.setCurrentPage(pageNumb)
-    .then(data => {
-      setResponse(data)
-      setLoading(false)
-    })
-    .catch(e => {
-      errMsg(e)
-    })
+    // news.setCurrentPage(pageNumb)
+    // .then(data => {
+    //   setResponse(data)
+    //   setLoading(false)
+    // })
+    // .catch(e => {
+    //   errMsg(e)
+    // })
   }
 
 	return (
