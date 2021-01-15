@@ -8,53 +8,126 @@ import { Search } from './components/Search';
 import { useStyles} from './useStyles';
 import { Loading } from './components/Loading';
 import {categoryItem as items} from './data/categoryItem'
-// import News from './data/News'
-import axios from 'axios';
+import News from './data/News'
 
 
-// const news = new News("Nahid");
+const news = new News(items.general);
 
 function App() {
   const classes = useStyles();
-  const [news,setNews] = useState([])
-  const [cat_item_select,setCategory] = useState(items.general);
-  const [totalNews,setTotalNews] = useState(0)
-  const [searchTerm,setTerm] = useState('')
 
+  const [response,setResponse] = useState([])
+  const [isLoading,setLoading] = useState(true)
+ 
+  const errMsg = (e) => {
+    alert("Something Went Wrong "+ e);
+    setLoading(false)
+  }
   useEffect(() => {
-    const url = `${process.env.REACT_APP_NEWS_URL}?apiKey=${process.env.REACT_APP_NEWS_API}&category=${cat_item_select}&pageSize=10&q=${searchTerm}`
+     news.getNews().then(data => {
 
-    axios.get(url)
-        .then(res => {
-          // console.log(res.data)
-          setNews(res.data.articles)
-          setTotalNews(res.data.totalResults)
-        })
-        .catch(err => console.log(err.response))
-    // console.log(url)
-  }, [cat_item_select,searchTerm])
+       setResponse(data)  
+       setLoading(false)
+     
+     })
+     .catch(e => {
+       errMsg(e)
+     })
+    
+  }, [])
 
   // change category
   const changeCategory = (category) => {
-    setCategory(category)
+    setLoading(true)
+    news.changeCategory(category)
+    .then(data => {
+      setResponse(data)
+      setLoading(false)
+    })
+    .catch(e => {
+      errMsg(e)
+    })
   }
-  const searchByTerm = term => setTerm(term)
-  
+  // handleSearch
+  const searchByTerm = term => {
+    setLoading(true)
+    news.search(term)
+    .then(data => {
+      setResponse(data)
+      setLoading(false)
+    })
+    .catch(e => {
+      errMsg(e)
+    })
+  }
+  // pagination handles
+  const next = () => {
+    // if(response.isNext){
+    // setLoading(true)
+    // }
+    // news.next()
+    // .then(data => {
+    //   setResponse(data)
+    //   setLoading(false)
+    // })
+    // .catch(e => {
+    //   errMsg(e)
+    // })
+  }
+  const prev = () => {
+    // if(response.isPrev){
+    //   setLoading(true)
+    //   }
+    // news.prev()
+    // .then(data => {
+    //   setResponse(data)
+    //   setLoading(false)
+    // })
+    // .catch(e => {
+    //   errMsg(e)
+    // })
+  }
+  const handlePageNumber = number => {
+
+  }
+  const gotoPage = (pageNumb) =>{
+    
+    //   setLoading(true)
+    
+    // news.setCurrentPage(pageNumb)
+    // .then(data => {
+    //   setResponse(data)
+    //   setLoading(false)
+    // })
+    // .catch(e => {
+    //   errMsg(e)
+    // })
+  }
+
 	return (
+    
 		<Grid container className={classes.root}>
 			<Grid className={classes.item}>
 				<Headbar />
-				<Search search={searchByTerm}/>
-				<CategoryList cat_select={cat_item_select} changeCategory={changeCategory} totalNews={totalNews}/>
-        {/* <Loading /> */}
-				<NewsList articles={news}/>
-				<Pagination />
+				<Search search={searchByTerm} />
+				<CategoryList cat_select={response.category} changeCategory={changeCategory}  />
+        {isLoading ? (
+          <Loading /> 
+        ) : (
+        <>
+          <NewsList articles={response.articles} totalNews={response.totalResults}/>
+				  <Pagination next={next} prev={prev} 
+            isNext={response.isNext} isPrev={response.isPrev}
+            currentPage={response.currentPage} gotoPage={gotoPage}
+            totalPage={response.totalPages}
+         />
+        </>
+          
+        )}
+				
 			</Grid>
-			
-			
 		</Grid>
 	);
 }
 
 export default App;
-// f27e790767464ed1ac580a01320b80ea
