@@ -38,7 +38,7 @@ function App() {
   }, []);
 
   // change category
-  const changeCategory = (category) => {
+  const changeCategoryAt = (category) => {
     setLoading(true);
     news
       .changeCategory(category)
@@ -49,6 +49,7 @@ function App() {
       .catch((e) => {
         errMsg(e);
       });
+    // }
   };
   // handleSearch
   const searchByTerm = (term) => {
@@ -119,7 +120,7 @@ function App() {
         <Search search={searchByTerm} />
         <CategoryList
           cat_select={response.category}
-          changeCategory={changeCategory}
+          changeCategory={changeCategoryAt}
         />
         {isLoading ? (
           <Loading />
@@ -128,8 +129,8 @@ function App() {
             <NewsList
               articles={response.articles}
               totalNews={response.totalResults}
-			  pageSize={response.pageSize}
-			  currentPage={response.currentPage}
+			        pageSize={response.pageSize}
+			        currentPage={response.currentPage}
             />
             <Pagination
               next={next}
