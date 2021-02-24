@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { Grid } from '@material-ui/core';
 import Headbar from './components/Headbar';
 import { CategoryList } from './components/CategoryList';
@@ -11,21 +11,19 @@ import { categoryItem as items } from './data/categoryItem';
 import News from './data/News';
 import { data } from './data/localdata'
 
-const news = new News(items.general);
 
 function App() {
   const classes = useStyles();
 
   const [response, setResponse] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const news = new News(items.general);
 
-  const errMsg = (e) => {
-    alert('Something Went Wrong ' + e);
-    setLoading(false);
-  };
   useEffect(() => {
 	  setResponse(data)
+	 console.log("calling useeffect")
 	//   getting data from news api
+	//   const news = new News(items.general);
     // news
     //   .getNews()
     //   .then((data) => {
@@ -37,18 +35,25 @@ function App() {
     //   });
   }, []);
 
+  const errMsg = (e) => {
+    alert('Something Went Wrong ' + e);
+    setLoading(false);
+  };
+
+
   // change category
   const changeCategoryAt = (category) => {
     setLoading(true);
-    news
-      .changeCategory(category)
-      .then((data) => {
-        setResponse(data);
-        setLoading(false);
-      })
-      .catch((e) => {
-        errMsg(e);
-      });
+		news
+		.changeCategory(category)
+		.then((data) => {
+			console.log('App category === called' + category)
+			setResponse(data);
+			setLoading(false);
+		})
+		.catch((e) => {
+			errMsg(e);
+		});
     // }
   };
   // handleSearch

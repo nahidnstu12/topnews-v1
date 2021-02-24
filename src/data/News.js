@@ -23,14 +23,15 @@ class News {
     // if(this._term)  url+= `&q=${this._term}`
     if (this._pageSize) url += `&pageSize=${this._pageSize}`;
     if (this._currentPage) url += `&page=${this._currentPage}`;
-    console.log(url);
+    // console.log(url);
     return url;
   }
   async getNews() {
     try {
       const { data } = await axios.get(this._getUrl());
       this._totalPages = Math.ceil(data.totalResults / this._pageSize);
-      console.log(data);
+      // console.log(data);
+      console.log('news class  === called ');
       return {
         articles: data.articles,
         totalResults: data.totalResults,
@@ -80,6 +81,7 @@ class News {
     this._category = category;
     this._currentPage = 1;
     this._term = '';
+    console.log('news func category === ' + category);
     return this.getNews();
   }
   search(term) {
